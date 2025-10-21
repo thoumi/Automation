@@ -1,6 +1,6 @@
-site_name: Système d'Automatisation - Documentation
+site_name: 🚀 Système d'Automatisation
 site_url: https://thoumi.github.io/Automation/
-site_description: Plateforme complète d'automatisation pour la gestion de tâches récurrentes, notifications multi-canaux et intégration d'APIs externes
+site_description: Plateforme professionnelle d'automatisation d'entreprise avec interface moderne et architecture robuste
 site_author: Thoumi
 
 # Repository
@@ -47,8 +47,12 @@ theme:
     - toc.follow
   
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Inter
+    code: JetBrains Mono
+  favicon: assets/favicon.png
+  logo: assets/logo.svg
+  icon:
+    repo: fontawesome/brands/github
   
   icon:
     repo: fontawesome/brands/github
