@@ -56,29 +56,56 @@ import { TaskSchedule, ScheduleFrequency, ScheduleFrequencyLabels, DaysOfWeek } 
 
       <!-- Hebdomadaire - Jour + Heure -->
       @if (schedule.frequency === ScheduleFrequency.Weekly) {
-        <div class="grid grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <!-- Sélection du jour -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
-              Quel jour ?
+            <label class="block text-sm font-medium text-gray-700 mb-3">
+              📅 Quel jour de la semaine ?
             </label>
-            <select 
-              [(ngModel)]="schedule.dayOfWeek"
-              (ngModelChange)="onScheduleChange()"
-              class="input">
+            <div class="grid grid-cols-2 gap-2">
               @for (day of daysOfWeek; track day.value) {
-                <option [value]="day.value">{{ day.label }}</option>
+                <button
+                  type="button"
+                  [class]="getDayButtonClass(day.value)"
+                  (click)="selectDay(day.value)">
+                  {{ day.label }}
+                </button>
               }
-            </select>
+            </div>
           </div>
+          
+          <!-- Sélection de l'heure -->
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">
-              À quelle heure ?
+              🕐 À quelle heure ?
             </label>
-            <input 
-              type="time" 
-              [(ngModel)]="schedule.timeOfDay"
-              (ngModelChange)="onScheduleChange()"
-              class="input">
+            <div class="flex items-center space-x-2">
+              <input 
+                type="time" 
+                [(ngModel)]="schedule.timeOfDay"
+                (ngModelChange)="onScheduleChange()"
+                class="input flex-1">
+              <div class="flex space-x-1">
+                <button 
+                  type="button"
+                  (click)="setQuickTime('09:00')"
+                  class="px-2 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded">
+                  9h
+                </button>
+                <button 
+                  type="button"
+                  (click)="setQuickTime('12:00')"
+                  class="px-2 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded">
+                  12h
+                </button>
+                <button 
+                  type="button"
+                  (click)="setQuickTime('18:00')"
+                  class="px-2 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded">
+                  18h
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       }
@@ -112,10 +139,19 @@ import { TaskSchedule, ScheduleFrequency, ScheduleFrequencyLabels, DaysOfWeek } 
       }
 
       <!-- Aperçu de la planification -->
-      <div class="mt-4 p-4 bg-blue-50 rounded-lg">
-        <p class="text-sm text-blue-900">
-          <strong>Résumé :</strong> {{ getDescription() }}
+      <div class="mt-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+        <div class="flex items-center space-x-2 mb-2">
+          <span class="text-blue-600">📋</span>
+          <span class="text-sm font-medium text-blue-900">Résumé de la planification</span>
+        </div>
+        <p class="text-sm text-blue-800">
+          {{ getDescription() }}
         </p>
+        @if (schedule.frequency === ScheduleFrequency.Weekly) {
+          <div class="mt-2 text-xs text-blue-600">
+            💡 La tâche s'exécutera automatiquement chaque semaine
+          </div>
+        }
       </div>
     </div>
   `
@@ -195,6 +231,27 @@ export class SchedulePickerComponent implements OnInit {
       default:
         return 'Non planifié';
     }
+  }
+
+  // Méthodes pour la sélection des jours
+  selectDay(dayValue: number): void {
+    this.schedule.dayOfWeek = dayValue;
+    this.onScheduleChange();
+  }
+
+  getDayButtonClass(dayValue: number): string {
+    const isSelected = this.schedule.dayOfWeek === dayValue;
+    return `px-3 py-2 text-sm font-medium rounded-lg border transition-colors ${
+      isSelected 
+        ? 'bg-blue-500 text-white border-blue-500' 
+        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+    }`;
+  }
+
+  // Méthodes pour les heures rapides
+  setQuickTime(time: string): void {
+    this.schedule.timeOfDay = time;
+    this.onScheduleChange();
   }
 }
 

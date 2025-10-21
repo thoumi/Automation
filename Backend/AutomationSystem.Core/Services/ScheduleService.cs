@@ -63,7 +63,6 @@ public class ScheduleService
 
     private static string GetWeeklyDescription(TaskSchedule schedule)
     {
-        var dayName = schedule.DayOfWeek?.ToString() ?? "lundi";
         var time = schedule.TimeOfDay?.ToString("HH\\:mm") ?? "09:00";
         
         var dayNameFr = schedule.DayOfWeek switch
@@ -79,6 +78,39 @@ public class ScheduleService
         };
         
         return $"Chaque {dayNameFr} à {time}";
+    }
+
+    /// <summary>
+    /// Valide une planification hebdomadaire
+    /// </summary>
+    public static bool IsValidWeeklySchedule(TaskSchedule schedule)
+    {
+        return schedule.Frequency == ScheduleFrequency.Weekly 
+               && schedule.DayOfWeek.HasValue 
+               && schedule.TimeOfDay.HasValue;
+    }
+
+    /// <summary>
+    /// Obtient le prochain jour d'exécution pour une planification hebdomadaire
+    /// </summary>
+    public static DateTime GetNextWeeklyExecution(TaskSchedule schedule)
+    {
+        if (!IsValidWeeklySchedule(schedule))
+            return DateTime.Now.AddDays(1);
+
+        var now = DateTime.Now;
+        var targetDay = (int)schedule.DayOfWeek!.Value;
+        var targetTime = schedule.TimeOfDay!.Value;
+        
+        // Calculer le prochain jour de la semaine
+        var daysUntilTarget = (targetDay - (int)now.DayOfWeek + 7) % 7;
+        if (daysUntilTarget == 0 && now.TimeOfDay >= targetTime.ToTimeSpan())
+        {
+            daysUntilTarget = 7; // Prochaine semaine
+        }
+        
+        var nextExecution = now.Date.AddDays(daysUntilTarget).Add(targetTime.ToTimeSpan());
+        return nextExecution;
     }
 
     private static string GetMonthlyDescription(TaskSchedule schedule)
