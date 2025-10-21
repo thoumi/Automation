@@ -1,415 +1,437 @@
-# 🤖 Système d'Automatisation - Architecture Complète
+# 🤖 Système d'Automatisation d'Entreprise
 
-Un système d'automatisation robuste avec architecture trois couches pour gérer les tâches planifiées, le traitement de fichiers Excel, les notifications multi-canaux et l'intégration avec CORTEX.
+[![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
+[![Angular](https://img.shields.io/badge/Angular-18-DD0031?logo=angular)](https://angular.io/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://www.docker.com/)
+[![License](https://img.shields.io/badge/License-Proprietary-red.svg)]()
+
+> Plateforme complète d'automatisation pour la gestion de tâches récurrentes, notifications multi-canaux et intégration d'APIs externes.
+
+---
 
 ## 📋 Table des matières
 
-- [Architecture](#architecture)
-- [Fonctionnalités](#fonctionnalités)
-- [Technologies utilisées](#technologies-utilisées)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Utilisation](#utilisation)
-- [API Documentation](#api-documentation)
-- [Déploiement](#déploiement)
+- [Vue d'ensemble](#-vue-densemble)
+- [Fonctionnalités](#-fonctionnalités)
+- [Architecture](#-architecture)
+- [Technologies](#-technologies)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Utilisation](#-utilisation)
+- [Documentation](#-documentation)
+- [Contribution](#-contribution)
+- [Support](#-support)
+
+---
+
+## 🎯 Vue d'ensemble
+
+Ce système d'automatisation permet de :
+- **Planifier et exécuter** des tâches automatisées selon un calendrier personnalisé
+- **Traiter des fichiers Excel** et générer des rapports automatiquement
+- **Envoyer des notifications** via Email, WhatsApp et Amazon Chime
+- **Intégrer des APIs externes** (CORTEX, services tiers)
+- **Monitorer l'exécution** avec un tableau de bord en temps réel
+- **Gérer les utilisateurs** avec authentification sécurisée
+
+### Cas d'usage typiques
+
+✅ Vérification automatique de disponibilité de routes (Routenverfuegbarkeit)  
+✅ Génération de plans de staging quotidiens  
+✅ Extraction et traitement d'unités DNR  
+✅ Envoi de rapports programmés par email  
+✅ Notifications d'alertes en temps réel  
+
+---
+
+## ✨ Fonctionnalités
+
+### 🗓️ Planification Simplifiée
+- Interface intuitive pour créer des horaires (quotidien, hebdomadaire, mensuel)
+- Plus besoin de CRON expressions complexes
+- Aperçu en français de la planification
+
+### 📊 Tableau de Bord
+- Vue d'ensemble des tâches en cours d'exécution
+- Historique complet des exécutions
+- Statistiques de succès/échec
+- Graphiques de performance
+
+### 📧 Notifications Multi-Canaux
+- **Email** : Envoi de rapports et alertes
+- **WhatsApp** : Notifications instantanées via Twilio
+- **Amazon Chime** : Intégration webhooks pour équipes
+
+### 📁 Gestion de Fichiers
+- Upload de fichiers Excel
+- Traitement automatique avec ClosedXML
+- Génération de rapports et images
+- Historique des traitements
+
+### 🔐 Sécurité
+- Authentification JWT
+- Gestion des utilisateurs et rôles
+- Hashage des mots de passe avec BCrypt
+- Protection CORS configurée
+
+### 🐳 Déploiement Facile
+- Architecture conteneurisée (Docker)
+- Configuration via variables d'environnement
+- Base de données SQL Server incluse
+- Reverse proxy Nginx pour le frontend
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-+--------------------------------------------------------+
-|                     FRONTEND (Angular)                 |
-|  - Dashboard (état des tâches, logs, configuration)    |
-|  - Interface admin : upload fichiers, config horaires  |
-+--------------------------------------------------------+
-|                     BACKEND (ASP.NET Core)             |
-|  - Service d'automatisation planifiée (Hangfire)       |
-|  - Modules : Mail, Excel, CORTEX API, WhatsApp, Chime  |
-|  - API REST pour Angular                               |
-+--------------------------------------------------------+
-|                     INFRASTRUCTURE                     |
-|  - Base de données (SQL Server / PostgreSQL)           |
-|  - Stockage fichiers (local ou S3)                     |
-|  - Authentification / Sécurité                         |
-+--------------------------------------------------------+
+┌─────────────────────────────────────────────────────────────┐
+│                         FRONTEND                            │
+│              Angular 18 + Tailwind CSS                      │
+│         (http://localhost:4300)                             │
+└────────────────────┬────────────────────────────────────────┘
+                     │ HTTP/REST
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│                         BACKEND API                          │
+│                    ASP.NET Core 8                           │
+│         (http://localhost:5555/api)                         │
+│                                                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
+│  │   Controllers │  │   Services   │  │   Jobs       │    │
+│  │   (REST API)  │  │  (Business)  │  │  (Hangfire)  │    │
+│  └──────────────┘  └──────────────┘  └──────────────┘    │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    INFRASTRUCTURE                            │
+│                                                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
+│  │  SQL Server  │  │  File System │  │  External    │    │
+│  │  (Database)  │  │  (Uploads)   │  │  APIs        │    │
+│  └──────────────┘  └──────────────┘  └──────────────┘    │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-### Structure du projet
+### Couches applicatives
 
-```
-Automatisation/
-├── Backend/
-│   ├── AutomationSystem.API/          # API REST ASP.NET Core
-│   ├── AutomationSystem.Core/         # Logique métier et services
-│   ├── AutomationSystem.Infrastructure/ # Base de données et infrastructure
-│   └── AutomationSystem.sln
-├── Frontend/
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── core/                  # Services, guards, interceptors
-│   │   │   └── features/              # Composants fonctionnels
-│   │   └── environments/
-│   ├── angular.json
-│   └── package.json
-├── docker-compose.yml
-└── README.md
-```
+1. **Frontend** (Angular)
+   - Interface utilisateur responsive
+   - Authentification et routing
+   - Consommation API REST
+
+2. **Backend** (ASP.NET Core)
+   - API RESTful
+   - Authentification JWT
+   - Logique métier
+   - Orchestration des jobs
+
+3. **Infrastructure**
+   - Base de données SQL Server
+   - Stockage de fichiers
+   - Services externes (Email, SMS, Webhooks)
 
 ---
 
-## ✨ Fonctionnalités
-
-### 🔄 Automatisation planifiée
-
-- **Routenverfügbarkeit** (08h25) : Envoi quotidien du planning de disponibilité
-- **Staging Plan** (09h15) : Traitement et analyse du plan de staging
-- **DNR Units** (toutes les 15 min) : Traitement automatique des emails DNR
-
-### 📊 Traitement de données
-
-- Lecture et analyse de fichiers Excel (ClosedXML)
-- Conversion Excel → HTML → Image
-- Extraction et validation de données
-- Génération de rapports
-
-### 📨 Notifications multi-canaux
-
-- **Email** : Lecture IMAP et envoi SMTP (MailKit)
-- **WhatsApp** : Envoi via Twilio API
-- **Amazon Chime** : Webhooks pour notifications d'équipe
-
-### 🔌 Intégrations
-
-- **CORTEX API (Amazon)** : Récupération des données de tournées
-- **Azure Key Vault** : Gestion sécurisée des secrets (optionnel)
-- **Hangfire Dashboard** : Monitoring des tâches en temps réel
-
-### 📱 Interface Web
-
-- Dashboard avec statistiques en temps réel
-- Gestion des tâches planifiées
-- Consultation des logs d'exécution
-- Upload et gestion de fichiers
-- Configuration des destinataires
-
----
-
-## 🛠️ Technologies utilisées
+## 🛠️ Technologies
 
 ### Backend
-- **ASP.NET Core 8.0** - Framework web
-- **Hangfire** - Planification et exécution de tâches
-- **Entity Framework Core** - ORM
-- **ClosedXML** - Traitement Excel
-- **MailKit** - Gestion des emails
-- **Twilio** - Envoi WhatsApp
-- **Serilog** - Logging
+- **Runtime** : .NET 8.0
+- **Framework** : ASP.NET Core
+- **ORM** : Entity Framework Core
+- **Scheduler** : Hangfire
+- **Email** : MailKit
+- **Excel** : ClosedXML
+- **Authentication** : JWT Bearer
+- **Logging** : Serilog/NLog
 
 ### Frontend
-- **Angular 18** - Framework SPA
-- **Tailwind CSS** - Styling
-- **RxJS** - Programmation réactive
-- **TypeScript** - Langage typé
+- **Framework** : Angular 18
+- **Styling** : Tailwind CSS
+- **HTTP Client** : Angular HttpClient
+- **Routing** : Angular Router
+- **Forms** : Reactive Forms
 
 ### Infrastructure
-- **SQL Server 2022** (ou PostgreSQL 15)
-- **Docker & Docker Compose**
-- **Nginx** - Reverse proxy
+- **Database** : SQL Server 2019+
+- **Containerization** : Docker & Docker Compose
+- **Web Server** : Nginx (frontend)
+- **Reverse Proxy** : Kestrel (backend)
+
+### Services Externes
+- **Twilio** : WhatsApp/SMS
+- **Amazon Chime** : Webhooks
+- **CORTEX API** : Intégrations métier
 
 ---
 
-## 🚀 Installation
+## 📦 Installation
 
 ### Prérequis
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [Node.js 20+](https://nodejs.org/)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) (recommandé)
+- Docker Desktop (Windows/Mac) ou Docker Engine (Linux)
+- Git
+- 4 GB RAM minimum
+- Ports disponibles : 1444, 5555, 4300
 
-### Option 1 : Docker (Recommandé)
+### Installation Rapide
 
-```bash
-# Cloner le repository
-git clone <repository-url>
-cd Automatisation
+1. **Cloner le repository**
+   ```bash
+   git clone https://github.com/thoumi/Automation.git
+   cd Automation
+   ```
 
-# Lancer avec Docker Compose
-docker-compose up -d
+2. **Démarrer l'application**
+   ```bash
+   docker-compose up -d
+   ```
 
-# Accéder à l'application
-# Frontend: http://localhost:4200
-# API: http://localhost:5000
-# Hangfire: http://localhost:5000/hangfire
-# Swagger: http://localhost:5000/swagger
-```
+3. **Initialiser la base de données**
+   ```bash
+   docker exec automation-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "Test@Password123" -C -i /docker-entrypoint-initdb.d/init-database.sql
+   ```
 
-### Option 2 : Installation manuelle
+4. **Accéder à l'application**
+   - Frontend : http://localhost:4300
+   - Backend API : http://localhost:5555/api
+   - Hangfire Dashboard : http://localhost:5555/hangfire
 
-#### Backend
-
-```bash
-cd Backend
-
-# Restaurer les packages NuGet
-dotnet restore
-
-# Créer la base de données
-dotnet ef database update --project AutomationSystem.Infrastructure --startup-project AutomationSystem.API
-
-# Lancer l'API
-cd AutomationSystem.API
-dotnet run
-```
-
-#### Frontend
-
-```bash
-cd Frontend
-
-# Installer les dépendances
-npm install
-
-# Lancer en mode développement
-npm start
-
-# Build pour production
-npm run build
-```
+5. **Se connecter**
+   - Email : `admin@example.com`
+   - Mot de passe : `admin123`
 
 ---
 
 ## ⚙️ Configuration
 
-### Backend - appsettings.json
+### Variables d'environnement
+
+Créez un fichier `.env` à la racine du projet :
+
+```env
+# Base de données
+DB_SERVER=sqlserver
+DB_NAME=AutomationSystem
+DB_USER=sa
+DB_PASSWORD=VotreMotDePasseSecurise
+
+# JWT
+JWT_KEY=VotreCleSecrete256BitsMinimum
+JWT_ISSUER=AutomationSystem
+JWT_AUDIENCE=AutomationSystemClient
+JWT_DURATION=60
+
+# Email
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=votre@email.com
+SMTP_PASSWORD=VotreMotDePasse
+
+# Twilio (WhatsApp)
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=votre_token
+TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+
+# Amazon Chime
+CHIME_WEBHOOK_URL=https://hooks.chime.aws/...
+
+# CORTEX API
+CORTEX_API_URL=https://api.cortex.com
+CORTEX_API_KEY=votre_cle_api
+```
+
+### Configuration Backend
+
+Modifiez `Backend/AutomationSystem.API/appsettings.json` :
 
 ```json
 {
   "ConnectionStrings": {
-    "SqlServer": "Server=localhost;Database=AutomationSystem;Trusted_Connection=True;"
+    "SqlServer": "Server=sqlserver;Database=AutomationSystem;User=sa;Password=Test@Password123;TrustServerCertificate=True"
   },
-  "Email": {
-    "ImapHost": "imap.outlook.com",
-    "ImapPort": "993",
-    "SmtpHost": "smtp.outlook.com",
-    "SmtpPort": "587",
-    "Username": "votre-email@outlook.com",
-    "Password": "votre-mot-de-passe"
-  },
-  "Twilio": {
-    "AccountSid": "VOTRE_ACCOUNT_SID",
-    "AuthToken": "VOTRE_AUTH_TOKEN",
-    "WhatsAppNumber": "+14155238886"
-  },
-  "Chime": {
-    "WebhookUrl": "https://hooks.chime.aws/incomingwebhooks/VOTRE_WEBHOOK"
-  },
-  "Cortex": {
-    "BaseUrl": "https://cortex.amazon.com/api",
-    "ApiKey": "VOTRE_API_KEY"
+  "Jwt": {
+    "Key": "VotreCleSecrete256BitsMinimum",
+    "Issuer": "AutomationSystem",
+    "Audience": "AutomationSystemClient",
+    "DurationInMinutes": 60
   }
 }
 ```
 
-### Frontend - environment.ts
+### Configuration Frontend
+
+Modifiez `Frontend/src/environments/environment.ts` :
 
 ```typescript
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:5001/api'
+  apiUrl: 'http://localhost:5555/api'
 };
 ```
 
-### Variables d'environnement (Production)
+---
 
-Pour la production, utilisez des variables d'environnement ou Azure Key Vault :
+## 🚀 Utilisation
 
-```bash
-export Email__Username="votre-email@outlook.com"
-export Email__Password="votre-mot-de-passe"
-export Twilio__AccountSid="VOTRE_SID"
-export Twilio__AuthToken="VOTRE_TOKEN"
+### Créer une Tâche Automatisée
+
+1. **Naviguer vers "Tâches"**
+2. **Cliquer sur "Nouvelle Tâche"**
+3. **Remplir les informations** :
+   - Nom de la tâche
+   - Description
+   - Type de tâche (Routenverfuegbarkeit, StagingPlan, DNRUnits)
+   - Configuration JSON si nécessaire
+4. **Configurer la planification** :
+   - Choisir la fréquence (quotidien, hebdomadaire, mensuel)
+   - Définir l'heure d'exécution
+5. **Activer la tâche**
+
+### Ajouter des Destinataires de Notifications
+
+1. **Naviguer vers "Destinataires"**
+2. **Cliquer sur "Nouveau Destinataire"**
+3. **Choisir le type** :
+   - Email
+   - WhatsApp
+   - Chime
+4. **Entrer l'identifiant** (email, numéro, webhook URL)
+5. **Enregistrer**
+
+### Consulter les Logs
+
+1. **Naviguer vers "Logs"**
+2. **Filtrer par** :
+   - Tâche
+   - Statut (Succès, Échec, En cours)
+   - Date
+3. **Voir les détails** d'une exécution
+
+---
+
+## 📚 Documentation
+
+### Documentation Complète
+
+- 📖 **[Documentation Technique](./DOCUMENTATION_TECHNIQUE.md)** : Architecture détaillée, API, modèles de données
+- 📖 **[Documentation Fonctionnelle](./DOCUMENTATION_FONCTIONNELLE.md)** : Guide utilisateur, cas d'usage, workflows
+- 📖 **[Guide de Démarrage](./LISEZ_MOI_EN_PREMIER.txt)** : Premier pas avec l'application
+- 📖 **[Guide Planification](./GUIDE_PLANIFICATION_SIMPLE.md)** : Comment utiliser le système de planification
+
+### API Documentation
+
+#### Authentification
+
+**POST** `/api/auth/login`
+```json
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
 ```
 
----
-
-## 📖 Utilisation
-
-### Créer une nouvelle tâche planifiée
-
-1. Accédez à l'interface web : `http://localhost:4200`
-2. Connectez-vous (utilisateur par défaut : admin / admin)
-3. Allez dans **Tâches** → **Nouvelle tâche**
-4. Configurez :
-   - Nom de la tâche
-   - Type (Routenverfuegbarkeit, StagingPlan, DNRUnits)
-   - Expression Cron (ex: `25 8 * * *` = tous les jours à 8h25)
-5. Activez la tâche
-
-### Uploader un fichier Excel
-
-1. Allez dans **Fichiers**
-2. Cliquez sur **Télécharger un fichier**
-3. Sélectionnez votre fichier `.xlsx`
-4. Le système le traitera automatiquement
-
-### Ajouter des destinataires
-
-1. Allez dans **Destinataires**
-2. Cliquez sur **Nouveau destinataire**
-3. Choisissez le type (Email, WhatsApp, Chime)
-4. Entrez l'identifiant approprié
-
-### Consulter les logs
-
-1. Allez dans **Logs**
-2. Filtrez par :
-   - Nom de la tâche
-   - Statut (Succès, Échec, Avertissement)
-   - Période
-3. Cliquez sur une ligne pour voir les détails
-
----
-
-## 📚 API Documentation
-
-### Endpoints principaux
+**Réponse** :
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
 
 #### Tâches
-- `GET /api/tasks` - Liste des tâches planifiées
-- `POST /api/tasks` - Créer une tâche
-- `PUT /api/tasks/{id}` - Modifier une tâche
-- `DELETE /api/tasks/{id}` - Supprimer une tâche
-- `POST /api/tasks/{id}/execute` - Exécuter manuellement
+
+**GET** `/api/tasks` - Liste toutes les tâches  
+**POST** `/api/tasks` - Créer une nouvelle tâche  
+**PUT** `/api/tasks/{id}` - Modifier une tâche  
+**DELETE** `/api/tasks/{id}` - Supprimer une tâche  
+**POST** `/api/tasks/{id}/execute` - Exécuter manuellement  
 
 #### Logs
-- `GET /api/logs` - Liste des logs (avec pagination et filtres)
-- `GET /api/logs/{id}` - Détails d'un log
-- `GET /api/logs/stats` - Statistiques d'exécution
 
-#### Fichiers
-- `GET /api/files` - Liste des fichiers
-- `POST /api/files/upload` - Upload un fichier
-- `GET /api/files/{id}/download` - Télécharger un fichier
-- `DELETE /api/files/{id}` - Supprimer un fichier
+**GET** `/api/logs` - Liste tous les logs  
+**GET** `/api/logs/{id}` - Détails d'un log  
 
 #### Destinataires
-- `GET /api/recipients` - Liste des destinataires
-- `POST /api/recipients` - Créer un destinataire
-- `PATCH /api/recipients/{id}/toggle` - Activer/Désactiver
 
-Documentation complète : `http://localhost:5000/swagger`
-
----
-
-## 🚢 Déploiement
-
-### Azure App Service
-
-```bash
-# Publier le backend
-cd Backend/AutomationSystem.API
-dotnet publish -c Release -o ./publish
-
-# Déployer avec Azure CLI
-az webapp up --name votre-app-name --resource-group votre-rg
-```
-
-### AWS EC2 / Elastic Beanstalk
-
-```bash
-# Créer une image Docker
-docker build -t automation-backend ./Backend
-docker build -t automation-frontend ./Frontend
-
-# Pousser vers ECR
-docker tag automation-backend:latest xxx.dkr.ecr.region.amazonaws.com/automation-backend
-docker push xxx.dkr.ecr.region.amazonaws.com/automation-backend
-```
-
-### Docker Swarm / Kubernetes
-
-Utilisez les fichiers de configuration fournis dans `/deployment`.
-
----
-
-## 🔐 Sécurité
-
-### Bonnes pratiques implémentées
-
-- ✅ Authentification JWT
-- ✅ HTTPS obligatoire en production
-- ✅ Secrets gérés via variables d'environnement
-- ✅ Validation des entrées utilisateur
-- ✅ CORS configuré
-- ✅ Rate limiting sur l'API (recommandé)
-
-### Pour la production
-
-1. Changez toutes les clés secrètes dans `appsettings.json`
-2. Utilisez Azure Key Vault ou AWS Secrets Manager
-3. Activez l'authentification Azure AD / OAuth2
-4. Configurez HTTPS avec un certificat valide
-5. Mettez en place un WAF (Web Application Firewall)
-
----
-
-## 📊 Monitoring
-
-### Hangfire Dashboard
-
-Accédez à `http://localhost:5000/hangfire` pour :
-- Voir les tâches en cours
-- Historique des exécutions
-- Réessayer les tâches échouées
-- Statistiques de performance
-
-### Logs
-
-Les logs sont écrits dans :
-- Console (développement)
-- Fichiers : `logs/automation-{Date}.txt`
-- Application Insights (production - optionnel)
+**GET** `/api/recipients` - Liste tous les destinataires  
+**POST** `/api/recipients` - Créer un destinataire  
+**DELETE** `/api/recipients/{id}` - Supprimer un destinataire  
 
 ---
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! N'hésitez pas à :
+### Guidelines
+
 1. Fork le projet
 2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add AmazingFeature'`)
+3. Commit les changements (`git commit -m 'Add AmazingFeature'`)
 4. Push vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
+
+### Standards de Code
+
+- **Backend** : Suivre les conventions C# et .NET
+- **Frontend** : Suivre les conventions Angular et TypeScript
+- **Commits** : Messages clairs en français
+- **Tests** : Ajouter des tests unitaires pour les nouvelles fonctionnalités
 
 ---
 
 ## 📝 Licence
 
-Ce projet est sous licence MIT.
+Projet propriétaire - Tous droits réservés © 2025
 
 ---
 
 ## 📞 Support
 
-Pour toute question ou problème :
-- Ouvrez une issue sur GitHub
-- Consultez la documentation Swagger
-- Vérifiez les logs dans Hangfire Dashboard
+### Contact
+
+- **Email** : support@votreentreprise.com
+- **Issues** : [GitHub Issues](https://github.com/thoumi/Automation/issues)
+
+### FAQ
+
+**Q: Comment changer le mot de passe admin ?**  
+R: Exécutez le script SQL fourni dans `scripts/change-admin-password.sql`
+
+**Q: L'application ne démarre pas ?**  
+R: Vérifiez que Docker est bien lancé et que les ports 1444, 5555, 4300 sont disponibles
+
+**Q: Comment ajouter une nouvelle API externe ?**  
+R: Créez un nouveau service dans `Backend/AutomationSystem.Core/Services/`
+
+**Q: Les emails ne s'envoient pas ?**  
+R: Vérifiez les paramètres SMTP dans `appsettings.json`
 
 ---
 
-## 🎯 Roadmap
+## 🗺️ Roadmap
 
-- [ ] Intégration IA pour analyse prédictive
-- [ ] Support multi-tenant
+- [ ] Interface d'administration avancée
+- [ ] Support multi-langues (EN, DE)
+- [ ] Notifications Slack/Teams
 - [ ] API GraphQL
-- [ ] Application mobile (React Native)
-- [ ] Export des données en PDF
-- [ ] Notifications push navigateur
-- [ ] Tableau de bord analytique avancé
+- [ ] Mobile App (React Native)
+- [ ] Export de rapports PDF
+- [ ] Intégration CI/CD
+- [ ] Tests automatisés (Unit, Integration, E2E)
 
 ---
 
-**Fait avec ❤️ pour l'automatisation intelligente**
+## 📊 Statistiques du Projet
 
+- **Lignes de code** : ~12,000
+- **Fichiers** : 131
+- **Langages** : C#, TypeScript, HTML, CSS, SQL
+- **Commits** : 1+ (Initial release)
+
+---
+
+**⭐ Si ce projet vous est utile, n'hésitez pas à lui donner une étoile !**
+
+---
+
+*Dernière mise à jour : Octobre 2025*
