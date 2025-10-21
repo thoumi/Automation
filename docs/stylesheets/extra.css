@@ -1,0 +1,61 @@
+/* Custom styles for Automation System Documentation */
+
+:root {
+  --md-primary-fg-color: #4f46e5;
+  --md-accent-fg-color: #4f46e5;
+}
+
+/* Hero section */
+.md-typeset h1 {
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+}
+
+/* Code blocks */
+.md-typeset code {
+  background-color: #f8fafc;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+
+/* Admonitions customization */
+.md-typeset .admonition {
+  border-left: 4px solid;
+  border-radius: 0.5rem;
+}
+
+/* Tables */
+.md-typeset table:not([class]) {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: #f8fafc;
+  font-weight: 600;
+}
+
+/* Success badges */
+.badge-success {
+  background-color: #10b981;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Cards */
+.feature-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .md-typeset code {
+  background-color: #1e293b;
+}
+

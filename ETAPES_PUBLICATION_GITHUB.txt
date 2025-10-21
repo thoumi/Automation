@@ -1,0 +1,273 @@
+═══════════════════════════════════════════════════════════════
+    🚀 ÉTAPES POUR PUBLIER SUR GITHUB
+    Guide Visuel Étape par Étape
+═══════════════════════════════════════════════════════════════
+
+✅ DÉJÀ FAIT (automatiquement) :
+────────────────────────────────────────────────────────────────
+✓ Repository Git initialisé
+✓ Tous les fichiers ajoutés (97 fichiers)
+✓ Premier commit créé
+✓ Branche renommée en 'main'
+
+🎯 IL VOUS RESTE 3 ÉTAPES :
+────────────────────────────────────────────────────────────────
+1. Créer le repository sur GitHub (5 min)
+2. Connecter le repository local à GitHub (1 commande)
+3. Pousser le code (1 commande)
+
+═══════════════════════════════════════════════════════════════
+    📍 ÉTAPE 1 : CRÉER LE REPOSITORY SUR GITHUB
+═══════════════════════════════════════════════════════════════
+
+1️⃣ Aller sur https://github.com
+
+2️⃣ Se connecter à votre compte GitHub
+    (Si vous n'avez pas de compte, créez-en un gratuitement)
+
+3️⃣ Cliquer sur le bouton "+" en haut à droite de la page
+
+4️⃣ Sélectionner "New repository"
+
+5️⃣ Remplir le formulaire :
+
+    ┌────────────────────────────────────────────────────┐
+    │ Repository name *                                  │
+    │ automation-system                                  │
+    │ ↑ Vous pouvez choisir un autre nom                 │
+    └────────────────────────────────────────────────────┘
+
+    ┌────────────────────────────────────────────────────┐
+    │ Description (optional)                             │
+    │ Système d'automatisation avec planification       │
+    │ simplifiée - Frontend Angular + Backend ASP.NET   │
+    └────────────────────────────────────────────────────┘
+
+    Visibilité :
+    ┌────────────────────────────────────────────────────┐
+    │ ○ Public  (tout le monde peut voir)               │
+    │ ● Private (seulement vous et ceux que vous invitez)│
+    │   ↑ RECOMMANDÉ pour code d'entreprise              │
+    └────────────────────────────────────────────────────┘
+
+    NE PAS COCHER :
+    ┌────────────────────────────────────────────────────┐
+    │ □ Add a README file                                │
+    │ □ Add .gitignore                                   │
+    │ □ Choose a license                                 │
+    │                                                     │
+    │ ⚠️ Laissez tout décoché car nous avons déjà        │
+    │    ces fichiers !                                  │
+    └────────────────────────────────────────────────────┘
+
+6️⃣ Cliquer sur le bouton vert "Create repository"
+
+7️⃣ GitHub va afficher une page avec plusieurs options.
+    Vous verrez une section qui dit :
+    "…or push an existing repository from the command line"
+
+8️⃣ Dans cette section, COPIEZ L'URL qui ressemble à :
+    https://github.com/VOTRE-USERNAME/automation-system.git
+    
+    ⚠️ IMPORTANT : Notez cette URL, vous en aurez besoin !
+
+═══════════════════════════════════════════════════════════════
+    📍 ÉTAPE 2 : CONNECTER AU REPOSITORY GITHUB
+═══════════════════════════════════════════════════════════════
+
+Dans votre PowerShell, exécutez :
+
+git remote add origin https://github.com/VOTRE-USERNAME/automation-system.git
+                        ↑
+                        Remplacez par votre URL !
+
+Exemple avec un vrai username :
+git remote add origin https://github.com/johndoe/automation-system.git
+
+═══════════════════════════════════════════════════════════════
+    📍 ÉTAPE 3 : POUSSER LE CODE SUR GITHUB
+═══════════════════════════════════════════════════════════════
+
+Dans votre PowerShell, exécutez :
+
+git push -u origin main
+
+⏳ Cette commande va :
+- Envoyer tous vos fichiers sur GitHub
+- Cela peut prendre 30 secondes à 2 minutes
+
+✅ Si tout se passe bien, vous verrez :
+    Enumerating objects: ...
+    Counting objects: 100% ...
+    Writing objects: 100% ...
+    To https://github.com/...
+     * [new branch]      main -> main
+
+═══════════════════════════════════════════════════════════════
+    🎉 C'EST TERMINÉ !
+═══════════════════════════════════════════════════════════════
+
+Votre code est maintenant sur GitHub ! 🚀
+
+Allez voir votre repository sur :
+https://github.com/VOTRE-USERNAME/automation-system
+
+Vous verrez :
+✓ Tous vos fichiers
+✓ Toute la documentation
+✓ L'historique des commits
+✓ Le README.md s'affiche automatiquement
+
+═══════════════════════════════════════════════════════════════
+    📋 RÉSUMÉ DES COMMANDES
+═══════════════════════════════════════════════════════════════
+
+# 1. Créer repo sur GitHub (via navigateur)
+
+# 2. Connecter à GitHub
+git remote add origin https://github.com/VOTRE-USERNAME/automation-system.git
+
+# 3. Pousser le code
+git push -u origin main
+
+FAIT ! ✅
+
+═══════════════════════════════════════════════════════════════
+    🔄 POUR LES PROCHAINES MODIFICATIONS
+═══════════════════════════════════════════════════════════════
+
+Quand vous modifiez des fichiers et voulez les publier :
+
+# 1. Voir ce qui a changé
+git status
+
+# 2. Ajouter les fichiers modifiés
+git add .
+
+# 3. Créer un commit
+git commit -m "Description de vos changements"
+
+# 4. Pousser sur GitHub
+git push
+
+═══════════════════════════════════════════════════════════════
+    🌟 PARTAGER AVEC VOTRE ÉQUIPE
+═══════════════════════════════════════════════════════════════
+
+Sur GitHub, aller dans Settings > Collaborators
+
+Ajouter les personnes de votre équipe par leur username ou email
+
+Ils pourront alors cloner le repository :
+git clone https://github.com/VOTRE-USERNAME/automation-system.git
+
+═══════════════════════════════════════════════════════════════
+    🆘 EN CAS DE PROBLÈME
+═══════════════════════════════════════════════════════════════
+
+ERREUR : "remote origin already exists"
+────────────────────────────────────────────────────────────────
+Solution :
+git remote remove origin
+git remote add origin https://github.com/VOTRE-USERNAME/automation-system.git
+
+ERREUR : "Permission denied"
+────────────────────────────────────────────────────────────────
+Solution :
+1. Vérifiez que vous êtes connecté à GitHub
+2. Vérifiez que l'URL est correcte
+3. Vous devrez peut-être créer un Personal Access Token :
+   GitHub → Settings → Developer settings → Personal access tokens
+   → Generate new token (classic)
+   → Cocher "repo"
+   → Générer et copier le token
+   → L'utiliser comme mot de passe
+
+ERREUR : "rejected"
+────────────────────────────────────────────────────────────────
+Solution :
+git pull origin main --rebase
+git push origin main
+
+═══════════════════════════════════════════════════════════════
+    ✅ CHECKLIST AVANT DE PUBLIER
+═══════════════════════════════════════════════════════════════
+
+□ J'ai créé un compte GitHub
+□ J'ai créé le repository sur GitHub
+□ J'ai copié l'URL du repository
+□ J'ai vérifié que le repository est Private (si code d'entreprise)
+□ J'ai vérifié qu'il n'y a pas de mots de passe en dur
+□ Je suis prêt à exécuter les commandes
+
+═══════════════════════════════════════════════════════════════
+    📊 CE QUI SERA PUBLIÉ
+═══════════════════════════════════════════════════════════════
+
+97 fichiers incluant :
+
+BACKEND :
+• AutomationSystem.API/
+• AutomationSystem.Core/
+• AutomationSystem.Infrastructure/
+• AutomationSystem.sln
+• Dockerfile
+
+FRONTEND :
+• Frontend/src/
+• package.json
+• angular.json
+• tailwind.config.js
+• Dockerfile
+
+INFRASTRUCTURE :
+• docker-compose.yml
+• nginx.conf
+
+DOCUMENTATION :
+• README.md (s'affiche automatiquement sur GitHub)
+• INSTALLATION.md
+• DEPLOYMENT.md
+• GUIDE_PLANIFICATION_SIMPLE.md
+• EXPLICATION_FONCTIONNELLE_COMPLETE.md
+• SCHEMA_FONCTIONNEL.txt
+• + 15 autres fichiers de documentation
+
+CONFIGURATION :
+• .gitignore
+• .dockerignore
+• env.template
+
+SCRIPTS :
+• init-database.sql
+• fix-database-schema.sql
+• start.bat
+• start.sh
+
+═══════════════════════════════════════════════════════════════
+    💡 CONSEILS
+═══════════════════════════════════════════════════════════════
+
+✓ Utilisez des messages de commit descriptifs
+✓ Commitez souvent (chaque fonctionnalité)
+✓ Gardez la branche 'main' stable
+✓ Utilisez Private pour code d'entreprise
+✓ Ne commitez jamais de vrais mots de passe
+✓ Documentez les changements importants
+
+═══════════════════════════════════════════════════════════════
+    🎯 PROCHAINES ÉTAPES
+═══════════════════════════════════════════════════════════════
+
+1. Aller sur https://github.com
+2. Créer le repository
+3. Copier l'URL
+4. Exécuter les 2 commandes dans PowerShell
+5. Admirer votre code sur GitHub ! 🎉
+
+═══════════════════════════════════════════════════════════════
+
+📖 Pour plus de détails, consultez : PUBLIER_SUR_GIT.txt
+
+═══════════════════════════════════════════════════════════════
+

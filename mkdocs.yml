@@ -1,0 +1,143 @@
+site_name: Système d'Automatisation - Documentation
+site_url: https://thoumi.github.io/Automation/
+site_description: Plateforme complète d'automatisation pour la gestion de tâches récurrentes, notifications multi-canaux et intégration d'APIs externes
+site_author: Thoumi
+
+# Repository
+repo_name: thoumi/Automation
+repo_url: https://github.com/thoumi/Automation
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2025 Automation System - Documentation Technique
+
+# Configuration
+theme:
+  name: material
+  language: fr
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Passer en mode sombre
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Passer en mode clair
+  
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  
+  font:
+    text: Roboto
+    code: Roboto Mono
+  
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/robot
+
+# Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - tables
+  - def_list
+  - footnotes
+  - toc:
+      permalink: true
+
+# Plugins
+plugins:
+  - search:
+      lang: fr
+  - minify:
+      minify_html: true
+
+# Page tree
+nav:
+  - Accueil:
+    - Introduction: index.md
+    - Installation Rapide: quickstart.md
+  - Guide Utilisateur:
+    - Vue d'ensemble: user-guide/overview.md
+    - Tableau de Bord: user-guide/dashboard.md
+    - Gestion des Tâches: user-guide/tasks.md
+    - Planification: user-guide/scheduling.md
+    - Destinataires: user-guide/recipients.md
+    - Historique: user-guide/logs.md
+  - Guide Technique:
+    - Architecture: technical/architecture.md
+    - API Reference: technical/api.md
+    - Modèles de Données: technical/models.md
+    - Services Backend: technical/services.md
+    - Frontend Angular: technical/frontend.md
+    - Base de Données: technical/database.md
+  - Déploiement:
+    - Docker Compose: deployment/docker.md
+    - Configuration: deployment/configuration.md
+    - Production: deployment/production.md
+  - Support:
+    - FAQ: support/faq.md
+    - Résolution des Problèmes: support/troubleshooting.md
+    - Contact: support/contact.md
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/thoumi/Automation
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/thoumi
+  
+  generator: false
+  
+  version:
+    provider: mike
+    default: latest
+
+# CSS personnalisé
+extra_css:
+  - stylesheets/extra.css
+
+# JavaScript personnalisé
+extra_javascript:
+  - javascripts/extra.js
+

@@ -1,0 +1,184 @@
+═══════════════════════════════════════════════════════════════
+    ⚡ COMMANDES GIT - PRÊTES À COPIER-COLLER
+═══════════════════════════════════════════════════════════════
+
+✅ DÉJÀ FAIT :
+git init
+git add .
+git commit -m "Initial commit: Système d'automatisation v2.0"
+git branch -M main
+
+═══════════════════════════════════════════════════════════════
+    📤 POUR PUBLIER SUR GITHUB
+═══════════════════════════════════════════════════════════════
+
+1️⃣ CRÉER LE REPOSITORY SUR GITHUB
+─────────────────────────────────────────────────────────────── 
+https://github.com → New repository
+Nom: automation-system
+Visibilité: Private (recommandé)
+Ne cochez RIEN
+
+2️⃣ CONNECTER AU REPOSITORY GITHUB
+───────────────────────────────────────────────────────────────
+⚠️ REMPLACEZ "VOTRE-USERNAME" par votre vrai username GitHub !
+
+git remote add origin https://github.com/VOTRE-USERNAME/automation-system.git
+
+3️⃣ POUSSER LE CODE
+───────────────────────────────────────────────────────────────
+git push -u origin main
+
+═══════════════════════════════════════════════════════════════
+    🔄 POUR LES MODIFICATIONS FUTURES
+═══════════════════════════════════════════════════════════════
+
+# Voir ce qui a changé
+git status
+
+# Ajouter tous les changements
+git add .
+
+# Créer un commit
+git commit -m "Description de vos changements"
+
+# Pousser sur GitHub
+git push
+
+═══════════════════════════════════════════════════════════════
+    📥 POUR CLONER LE REPOSITORY AILLEURS
+═══════════════════════════════════════════════════════════════
+
+git clone https://github.com/VOTRE-USERNAME/automation-system.git
+cd automation-system
+docker-compose up -d
+
+═══════════════════════════════════════════════════════════════
+    🌿 POUR TRAVAILLER AVEC DES BRANCHES
+═══════════════════════════════════════════════════════════════
+
+# Créer une nouvelle branche
+git checkout -b feature/nouvelle-fonctionnalite
+
+# Voir toutes les branches
+git branch
+
+# Changer de branche
+git checkout main
+
+# Fusionner une branche dans main
+git checkout main
+git merge feature/nouvelle-fonctionnalite
+
+# Pousser une branche sur GitHub
+git push origin feature/nouvelle-fonctionnalite
+
+═══════════════════════════════════════════════════════════════
+    🔍 COMMANDES UTILES
+═══════════════════════════════════════════════════════════════
+
+# Voir l'historique des commits
+git log
+
+# Voir l'historique (format court)
+git log --oneline
+
+# Voir les différences non commitées
+git diff
+
+# Annuler les modifications d'un fichier
+git checkout -- nom-du-fichier
+
+# Voir les remotes configurés
+git remote -v
+
+# Récupérer les dernières modifications
+git pull origin main
+
+═══════════════════════════════════════════════════════════════
+    🆘 COMMANDES DE DÉPANNAGE
+═══════════════════════════════════════════════════════════════
+
+# Supprimer le remote origin
+git remote remove origin
+
+# Changer l'URL du remote
+git remote set-url origin https://github.com/NEW-URL/repo.git
+
+# Annuler le dernier commit (ATTENTION : destructif)
+git reset --soft HEAD~1
+
+# Forcer le push (ATTENTION : à utiliser avec précaution)
+git push --force origin main
+
+═══════════════════════════════════════════════════════════════
+    📊 STATUT DU REPOSITORY
+═══════════════════════════════════════════════════════════════
+
+Repository local : ✅ Initialisé
+Fichiers ajoutés : ✅ 97 fichiers (12,071 lignes)
+Premier commit   : ✅ Créé
+Branche          : ✅ main
+
+IL RESTE :
+□ Créer repository sur GitHub
+□ Connecter au repository GitHub (git remote add origin ...)
+□ Pousser le code (git push -u origin main)
+
+═══════════════════════════════════════════════════════════════
+    📝 EXEMPLES DE MESSAGES DE COMMIT
+═══════════════════════════════════════════════════════════════
+
+✅ BONS MESSAGES :
+git commit -m "Ajout du module de planification simplifiée"
+git commit -m "Fix: Correction du bug de connexion"
+git commit -m "Feat: Nouveau composant de sélection de date"
+git commit -m "Docs: Mise à jour du README"
+git commit -m "Refactor: Simplification du service Excel"
+
+❌ MAUVAIS MESSAGES :
+git commit -m "update"
+git commit -m "fix"
+git commit -m "changes"
+git commit -m "test"
+
+═══════════════════════════════════════════════════════════════
+    🔐 FICHIERS SENSIBLES (déjà exclus par .gitignore)
+═══════════════════════════════════════════════════════════════
+
+Ces fichiers NE SERONT PAS publiés (c'est normal) :
+✗ node_modules/
+✗ bin/
+✗ obj/
+✗ .vs/
+✗ *.user
+✗ .env
+
+Ces fichiers SERONT publiés :
+✓ Code source (.cs, .ts, .html, .css)
+✓ Configuration (.json, .yml)
+✓ Documentation (.md, .txt)
+✓ Scripts (.sh, .bat, .sql)
+
+═══════════════════════════════════════════════════════════════
+    💡 WORKFLOW RECOMMANDÉ
+═══════════════════════════════════════════════════════════════
+
+Jour 1 :
+1. Créer repository sur GitHub
+2. git remote add origin ...
+3. git push -u origin main
+
+Jour 2+ (après modifications) :
+1. git add .
+2. git commit -m "Description claire"
+3. git push
+
+Simple et efficace ! ✅
+
+═══════════════════════════════════════════════════════════════
+
+Pour le guide complet, consultez : ETAPES_PUBLICATION_GITHUB.txt
+
+═══════════════════════════════════════════════════════════════
+
