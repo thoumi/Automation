@@ -1,0 +1,262 @@
+═══════════════════════════════════════════════════════════════
+    ⚡ AIDE-MÉMOIRE RAPIDE
+    Référence ultra-rapide pour l'utilisateur
+═══════════════════════════════════════════════════════════════
+
+🔐 CONNEXION
+═══════════════════════════════════════════════════════════════
+
+URL    : http://localhost:4300
+Email  : admin@example.com
+MDP    : admin123
+
+═══════════════════════════════════════════════════════════════
+    🎯 CRÉER UNE TÂCHE EN 30 SECONDES
+═══════════════════════════════════════════════════════════════
+
+1. Menu "Tâches" → "+ Nouvelle tâche"
+2. Nom + Description + Type
+3. Section Planification :
+   • Choisir fréquence dans la liste
+   • Remplir heure/jour selon le choix
+   • Lire le résumé bleu pour vérifier
+4. Cocher "Activée"
+5. Cliquer "Créer"
+
+FINI ! ✅
+
+═══════════════════════════════════════════════════════════════
+    📅 LES 5 FRÉQUENCES DISPONIBLES
+═══════════════════════════════════════════════════════════════
+
+1. Toutes les X minutes   →  "Toutes les 5 minutes"
+2. Toutes les X heures    →  "Toutes les 2 heures"
+3. Quotidien              →  "Tous les jours à 09:00"
+4. Hebdomadaire           →  "Chaque lundi à 08:30"
+5. Mensuel                →  "Le 1 de chaque mois à 07:00"
+
+═══════════════════════════════════════════════════════════════
+    🎮 ACTIONS SUR UNE TÂCHE
+═══════════════════════════════════════════════════════════════
+
+▶️  Exécuter maintenant     → Bouton vert "▶"
+⏸️  Activer/Désactiver      → Toggle ON/OFF
+✏️  Modifier               → Bouton bleu "✏"
+🗑️  Supprimer              → Bouton rouge "🗑"
+
+═══════════════════════════════════════════════════════════════
+    📊 CONSULTER LES LOGS
+═══════════════════════════════════════════════════════════════
+
+Menu "Logs" →
+
+✅ Vert     = Succès
+❌ Rouge    = Échec
+⏱️ Jaune    = En cours
+⚠️ Orange   = Avertissement
+
+Cliquer sur une ligne pour voir les détails.
+
+═══════════════════════════════════════════════════════════════
+    📈 DASHBOARD
+═══════════════════════════════════════════════════════════════
+
+Menu "Dashboard" →
+
+Affiche :
+• Nombre de tâches actives
+• Exécutions récentes
+• Taux de succès
+• Performance par tâche
+• Graphiques
+
+═══════════════════════════════════════════════════════════════
+    📁 UPLOADER UN FICHIER
+═══════════════════════════════════════════════════════════════
+
+Menu "Fichiers" →
+
+1. Cliquer "Upload"
+2. Choisir le fichier
+3. Cliquer "Envoyer"
+
+Le fichier sera traité automatiquement.
+
+═══════════════════════════════════════════════════════════════
+    👥 GÉRER LES DESTINATAIRES
+═══════════════════════════════════════════════════════════════
+
+Menu "Destinataires" →
+
+Types disponibles :
+• Email      → Adresse email
+• WhatsApp   → Numéro de téléphone
+• Chime      → URL Webhook
+
+═══════════════════════════════════════════════════════════════
+    🐳 COMMANDES DOCKER
+═══════════════════════════════════════════════════════════════
+
+Démarrer   : docker-compose up -d
+Arrêter    : docker-compose down
+Redémarrer : docker-compose restart
+Logs       : docker-compose logs -f
+État       : docker-compose ps
+
+═══════════════════════════════════════════════════════════════
+    🔍 RÉSOUDRE UN PROBLÈME
+═══════════════════════════════════════════════════════════════
+
+Tâche n'apparaît pas ?
+→ Actualiser la page (F5)
+
+Tâche ne s'exécute pas ?
+→ Vérifier qu'elle est "Activée"
+→ Vérifier la planification
+
+Erreur dans les logs ?
+→ Cliquer sur la ligne rouge
+→ Lire le message d'erreur
+→ Le système réessayera automatiquement
+
+Application ne répond pas ?
+→ docker-compose ps (vérifier état)
+→ docker-compose restart
+
+═══════════════════════════════════════════════════════════════
+    ⌨️ RACCOURCIS CLAVIER
+═══════════════════════════════════════════════════════════════
+
+F5 ou Ctrl+R       → Actualiser la page
+Ctrl+Shift+R       → Actualiser et vider cache
+Ctrl+Click         → Ouvrir dans nouvel onglet
+
+═══════════════════════════════════════════════════════════════
+    📱 PAGES DE L'APPLICATION
+═══════════════════════════════════════════════════════════════
+
+/login         → Connexion
+/dashboard     → Tableau de bord
+/tasks         → Gestion des tâches
+/logs          → Historique
+/files         → Fichiers
+/recipients    → Destinataires
+/settings      → Paramètres
+
+═══════════════════════════════════════════════════════════════
+    🎨 INTERPRÉTER LES SYMBOLES
+═══════════════════════════════════════════════════════════════
+
+▶   = Exécuter
+⏸   = Pause
+✏   = Modifier
+🗑   = Supprimer
+✅  = Succès
+❌  = Erreur
+⏱   = En cours
+⚠   = Attention
+📧  = Email
+📱  = WhatsApp
+💬  = Chime
+📊  = Rapport
+⏰  = Planifié
+
+═══════════════════════════════════════════════════════════════
+    💡 CONSEILS RAPIDES
+═══════════════════════════════════════════════════════════════
+
+✓ Toujours tester avec "Exécuter maintenant" avant d'activer
+✓ Lire le résumé bleu pour vérifier la planification
+✓ Consulter les logs en cas de doute
+✓ Ne pas créer trop de tâches en même temps
+✓ Espacer les horaires si plusieurs tâches quotidiennes
+
+═══════════════════════════════════════════════════════════════
+    🆘 ACCÈS RAPIDE AUX SERVICES
+═══════════════════════════════════════════════════════════════
+
+Frontend         : http://localhost:4300
+Backend API      : http://localhost:5555
+Hangfire Admin   : http://localhost:5555/hangfire
+SQL Server       : localhost:1444
+
+═══════════════════════════════════════════════════════════════
+    📚 DOCUMENTS UTILES
+═══════════════════════════════════════════════════════════════
+
+Démarrer               → LISEZ_MOI_EN_PREMIER.txt
+Démo complète          → DEMO_RAPIDE.txt
+Comprendre le système  → COMPRENDRE_LAPPLICATION.txt
+Planification          → NOUVEAU_SYSTEME_PLANIFICATION.txt
+Fonctionnement détaillé→ EXPLICATION_FONCTIONNELLE_COMPLETE.md
+Schémas visuels        → SCHEMA_FONCTIONNEL.txt
+Index complet          → INDEX_DOCUMENTATION.txt
+
+═══════════════════════════════════════════════════════════════
+    ⚡ EXEMPLES RAPIDES
+═══════════════════════════════════════════════════════════════
+
+RAPPORT QUOTIDIEN
+─────────────────────────────────────────────────────────────
+Nom         : Rapport quotidien
+Type        : Routenverfügbarkeit
+Fréquence   : Quotidien
+Heure       : 08:00
+Activée     : ✓
+
+VÉRIFICATION CONTINUE
+─────────────────────────────────────────────────────────────
+Nom         : Check continu
+Type        : DNR Units
+Fréquence   : Toutes les X minutes
+Intervalle  : 10
+Activée     : ✓
+
+RAPPORT HEBDOMADAIRE
+─────────────────────────────────────────────────────────────
+Nom         : Rapport hebdo
+Type        : Staging Plan
+Fréquence   : Hebdomadaire
+Jour        : Lundi
+Heure       : 09:00
+Activée     : ✓
+
+RAPPORT MENSUEL
+─────────────────────────────────────────────────────────────
+Nom         : Bilan mensuel
+Type        : Routenverfügbarkeit
+Fréquence   : Mensuel
+Jour        : 1
+Heure       : 07:00
+Activée     : ✓
+
+═══════════════════════════════════════════════════════════════
+    📞 SUPPORT
+═══════════════════════════════════════════════════════════════
+
+1. Consulter les logs (Menu "Logs")
+2. Vérifier le Dashboard (Menu "Dashboard")
+3. Lire la documentation (fichiers .txt et .md)
+4. Vérifier état Docker (docker-compose ps)
+
+═══════════════════════════════════════════════════════════════
+    ✅ CHECKLIST AVANT DE PARTIR
+═══════════════════════════════════════════════════════════════
+
+□ Je me suis connecté
+□ J'ai créé une première tâche
+□ J'ai testé avec "Exécuter maintenant"
+□ J'ai vu le résultat dans les logs
+□ La tâche est activée
+□ Je sais où consulter le dashboard
+
+Si tout est coché → Vous êtes prêt ! 🎉
+
+═══════════════════════════════════════════════════════════════
+
+💾 GARDEZ CE FICHIER SOUS LA MAIN !
+
+C'est votre référence rapide pour toute question ! ⚡
+
+═══════════════════════════════════════════════════════════════
+

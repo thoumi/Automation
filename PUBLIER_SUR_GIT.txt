@@ -1,0 +1,242 @@
+═══════════════════════════════════════════════════════════════
+    📤 GUIDE : PUBLIER L'APPLICATION SUR GIT
+═══════════════════════════════════════════════════════════════
+
+🎯 OBJECTIF
+
+Publier votre système d'automatisation sur un nouveau repository
+GitHub pour :
+- Sauvegarder le code
+- Partager avec votre équipe
+- Versionner les modifications
+- Faciliter le déploiement
+
+═══════════════════════════════════════════════════════════════
+    📋 ÉTAPES À SUIVRE
+═══════════════════════════════════════════════════════════════
+
+ÉTAPE 1 : Initialiser Git localement (FAIT AUTOMATIQUEMENT)
+ÉTAPE 2 : Créer le repository sur GitHub
+ÉTAPE 3 : Pousser le code
+
+═══════════════════════════════════════════════════════════════
+    🌐 ÉTAPE 2 : CRÉER LE REPOSITORY SUR GITHUB
+═══════════════════════════════════════════════════════════════
+
+1. Aller sur https://github.com
+2. Se connecter à votre compte
+3. Cliquer sur le bouton "+" en haut à droite
+4. Choisir "New repository"
+
+CONFIGURATION DU REPOSITORY :
+────────────────────────────────────────────────────────────────
+Repository name : automation-system
+                  (ou le nom de votre choix)
+
+Description : Système d'automatisation avec planification
+              simplifiée - Frontend Angular + Backend ASP.NET Core
+
+Visibilité :
+  ○ Public    (visible par tout le monde)
+  ● Private   (visible uniquement par vous/votre équipe)
+              ⚠️ RECOMMANDÉ pour code d'entreprise
+
+NE PAS COCHER :
+  □ Add a README file
+  □ Add .gitignore
+  □ Choose a license
+
+(Car nous avons déjà ces fichiers)
+
+5. Cliquer sur "Create repository"
+
+6. GitHub vous affichera une page avec des commandes
+   COPIEZ L'URL du repository qui ressemble à :
+   https://github.com/VOTRE-USERNAME/automation-system.git
+
+═══════════════════════════════════════════════════════════════
+    ⚡ ÉTAPE 3 : POUSSER LE CODE (COMMANDES PRÊTES)
+═══════════════════════════════════════════════════════════════
+
+Les commandes suivantes seront exécutées automatiquement :
+
+1. git init
+   → Initialise le repository local
+
+2. git add .
+   → Ajoute tous les fichiers
+
+3. git commit -m "Initial commit: Système d'automatisation v2.0"
+   → Crée le premier commit
+
+4. git branch -M main
+   → Renomme la branche en 'main'
+
+5. git remote add origin VOTRE_URL
+   → Connecte au repository GitHub
+
+6. git push -u origin main
+   → Pousse le code sur GitHub
+
+═══════════════════════════════════════════════════════════════
+    📁 CE QUI SERA PUBLIÉ
+═══════════════════════════════════════════════════════════════
+
+BACKEND (ASP.NET Core) :
+✓ AutomationSystem.API/
+✓ AutomationSystem.Core/
+✓ AutomationSystem.Infrastructure/
+✓ AutomationSystem.sln
+
+FRONTEND (Angular) :
+✓ Frontend/src/
+✓ Frontend/package.json
+✓ Frontend/angular.json
+✓ Frontend/tailwind.config.js
+
+INFRASTRUCTURE :
+✓ docker-compose.yml
+✓ Dockerfile (Backend)
+✓ Dockerfile (Frontend)
+✓ nginx.conf
+
+DOCUMENTATION :
+✓ README.md
+✓ INSTALLATION.md
+✓ DEPLOYMENT.md
+✓ GUIDE_PLANIFICATION_SIMPLE.md
+✓ EXPLICATION_FONCTIONNELLE_COMPLETE.md
+✓ SCHEMA_FONCTIONNEL.txt
+✓ Et tous les autres .txt et .md
+
+FICHIERS DE CONFIGURATION :
+✓ .gitignore (pour exclure node_modules, bin, obj, etc.)
+✓ .dockerignore
+
+CE QUI NE SERA PAS PUBLIÉ (grâce au .gitignore) :
+✗ node_modules/
+✗ bin/
+✗ obj/
+✗ .vs/
+✗ *.user
+✗ Fichiers de build temporaires
+
+═══════════════════════════════════════════════════════════════
+    🔒 SÉCURITÉ : AVANT DE PUBLIER
+═══════════════════════════════════════════════════════════════
+
+⚠️ VÉRIFIEZ QU'IL N'Y A PAS :
+
+□ Mots de passe en dur dans le code
+□ Clés API dans les fichiers
+□ Tokens d'authentification
+□ Données sensibles de l'entreprise
+
+✅ NOTRE APPLICATION :
+Les mots de passe sont dans :
+- docker-compose.yml (CHANGEZ-LES avant de publier)
+- appsettings.json (utilisez des variables d'environnement)
+
+RECOMMANDATION :
+→ Utilisez un repository PRIVATE
+→ Ne partagez jamais les vrais credentials
+
+═══════════════════════════════════════════════════════════════
+    📊 STRUCTURE DU REPOSITORY
+═══════════════════════════════════════════════════════════════
+
+automation-system/
+├── Backend/
+│   ├── AutomationSystem.API/
+│   ├── AutomationSystem.Core/
+│   └── AutomationSystem.Infrastructure/
+├── Frontend/
+│   ├── src/
+│   ├── package.json
+│   └── angular.json
+├── docker-compose.yml
+├── README.md
+├── INSTALLATION.md
+├── DEPLOYMENT.md
+└── Documentation (.txt, .md)
+
+═══════════════════════════════════════════════════════════════
+    🎯 APRÈS LA PUBLICATION
+═══════════════════════════════════════════════════════════════
+
+Votre code sera disponible sur :
+https://github.com/VOTRE-USERNAME/automation-system
+
+VOUS POURREZ :
+✓ Cloner le repository sur d'autres machines
+✓ Partager avec votre équipe
+✓ Suivre l'historique des modifications
+✓ Créer des branches pour nouvelles features
+✓ Faire des pull requests
+
+COMMANDES UTILES :
+────────────────────────────────────────────────────────────────
+Cloner ailleurs :
+  git clone https://github.com/VOTRE-USERNAME/automation-system.git
+
+Voir les modifications :
+  git status
+
+Ajouter des changements :
+  git add .
+  git commit -m "Description des changements"
+  git push
+
+Récupérer les dernières modifications :
+  git pull
+
+═══════════════════════════════════════════════════════════════
+    💡 CONSEILS
+═══════════════════════════════════════════════════════════════
+
+1. Utilisez des messages de commit clairs :
+   ✅ "Ajout du module de planification simplifiée"
+   ✅ "Fix: Correction erreur login"
+   ❌ "update"
+   ❌ "fix"
+
+2. Commitez régulièrement (chaque fonctionnalité)
+
+3. Créez des branches pour les nouvelles features :
+   git checkout -b feature/nouvelle-fonctionnalite
+
+4. Gardez 'main' stable (code qui fonctionne)
+
+5. Documentez les changements importants dans README.md
+
+═══════════════════════════════════════════════════════════════
+    🆘 EN CAS DE PROBLÈME
+═══════════════════════════════════════════════════════════════
+
+Erreur "remote origin already exists" ?
+→ git remote remove origin
+→ git remote add origin NOUVELLE_URL
+
+Erreur "rejected" lors du push ?
+→ git pull origin main --rebase
+→ git push origin main
+
+Erreur d'authentification ?
+→ Vérifiez vos credentials GitHub
+→ Utilisez un Personal Access Token si nécessaire
+
+═══════════════════════════════════════════════════════════════
+    ✅ CHECKLIST FINALE
+═══════════════════════════════════════════════════════════════
+
+AVANT DE POUSSER :
+□ J'ai créé le repository sur GitHub
+□ J'ai copié l'URL du repository
+□ J'ai vérifié qu'il n'y a pas de mots de passe en dur
+□ J'ai choisi Private si code d'entreprise
+□ Le .gitignore est présent
+
+PRÊT À POUSSER !
+
+═══════════════════════════════════════════════════════════════
+

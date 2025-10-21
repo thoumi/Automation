@@ -1,0 +1,47 @@
+═══════════════════════════════════════════════════════
+    IDENTIFIANTS DE CONNEXION - AUTOMATION SYSTEM
+═══════════════════════════════════════════════════════
+
+📧 Email : admin@example.com
+🔑 Mot de passe : admin123
+
+═══════════════════════════════════════════════════════
+    URLS DE L'APPLICATION
+═══════════════════════════════════════════════════════
+
+🌐 Frontend : http://localhost:4300
+🔧 Backend API : http://localhost:5555
+📊 Hangfire Dashboard : http://localhost:5555/hangfire
+💾 SQL Server : localhost:1444
+
+═══════════════════════════════════════════════════════
+    COMMANDES DOCKER UTILES
+═══════════════════════════════════════════════════════
+
+Démarrer l'application :
+    docker-compose up -d
+
+Arrêter l'application :
+    docker-compose down
+
+Voir les logs :
+    docker-compose logs -f
+
+Redémarrer un service :
+    docker-compose restart backend
+    docker-compose restart frontend
+
+Vérifier l'état des services :
+    docker-compose ps
+
+═══════════════════════════════════════════════════════
+    INFORMATIONS DE BASE DE DONNÉES
+═══════════════════════════════════════════════════════
+
+Serveur : localhost,1444
+Base de données : AutomationSystem
+Utilisateur : sa
+Mot de passe : Test@Password123
+
+═══════════════════════════════════════════════════════
+

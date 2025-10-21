@@ -1,0 +1,46 @@
+# Backend (.NET)
+Backend/**/bin/
+Backend/**/obj/
+Backend/**/out/
+Backend/**/*.user
+Backend/**/*.userosscache
+Backend/**/*.suo
+Backend/**/.vs/
+Backend/**/publish/
+Backend/**/logs/
+Backend/**/uploads/
+
+# Frontend (Angular)
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.angular/
+Frontend/.vscode/
+Frontend/*.log
+
+# Environment files
+*.env
+appsettings.Development.json
+appsettings.Production.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+
+# Docker
+*.dockerignore
+

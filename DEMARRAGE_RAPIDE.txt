@@ -1,0 +1,74 @@
+========================================
+ DEMARRAGE RAPIDE - Système d'Automatisation
+========================================
+
+✅ Configuration terminée !
+Le fichier .env a été créé avec les paramètres de test.
+
+🚀 POUR DEMARRER :
+
+1. Vérifiez que Docker Desktop est lancé
+
+2. Ouvrez PowerShell dans ce dossier
+
+3. Tapez cette commande :
+   docker-compose up -d
+
+4. Attendez 2-3 minutes
+
+5. Ouvrez votre navigateur :
+   http://localhost:4200
+
+6. Connectez-vous :
+   - Username : admin
+   - Password : admin
+
+========================================
+
+🔗 URLS IMPORTANTES :
+
+Frontend (Application)  : http://localhost:4200
+Backend API             : http://localhost:5000
+Hangfire Dashboard      : http://localhost:5000/hangfire
+Swagger API Docs        : http://localhost:5000/swagger
+
+========================================
+
+🛑 POUR ARRETER :
+
+docker-compose down
+
+========================================
+
+📚 DOCUMENTATION :
+
+- Guide utilisateur : GUIDE_CLIENT.md
+- Guide technique  : README.md
+- Aide installation : INSTALLATION.md
+
+========================================
+
+⚠️ PROBLEMES COURANTS :
+
+1. Port déjà utilisé ?
+   → Modifiez les ports dans docker-compose.yml
+
+2. Docker ne démarre pas ?
+   → Vérifiez que Docker Desktop est ouvert
+
+3. Page blanche ?
+   → Attendez 1-2 minutes de plus
+   → Vérifiez : docker-compose ps
+
+4. Erreur de build ?
+   → Nettoyez : docker-compose down -v
+   → Reconstru isez : docker-compose up -d --build
+
+========================================
+
+✅ TOUT EST PRET !
+
+Bonne utilisation !
+
+========================================
+

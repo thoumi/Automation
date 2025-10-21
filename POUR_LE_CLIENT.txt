@@ -1,0 +1,92 @@
+========================================
+  SYSTÈME D'AUTOMATISATION
+  Version de Démonstration
+========================================
+
+Bonjour,
+
+Vous avez reçu ce système d'automatisation pour vos tests.
+
+📦 CONTENU :
+- Application complète (Backend + Frontend)
+- Documentation utilisateur
+- Scripts de démarrage automatique
+
+🚀 COMMENT DÉMARRER ?
+
+1. Installez Docker Desktop
+   → https://www.docker.com/products/docker-desktop
+   
+2. Décompressez ce dossier
+
+3. Double-cliquez sur :
+   • Windows : start.bat
+   • Mac/Linux : start.sh
+
+4. Ouvrez votre navigateur
+   → http://localhost:4200
+
+5. Connectez-vous :
+   • Username : admin
+   • Password : admin
+
+📚 DOCUMENTATION :
+
+• TESTER_MAINTENANT.md
+  → Guide de démarrage express (5 minutes)
+
+• GUIDE_CLIENT.md
+  → Guide utilisateur complet
+
+• QUICK_START.md
+  → Démarrage rapide technique
+
+🎯 FONCTIONNALITÉS :
+
+✅ Planification de tâches automatiques
+✅ Traitement de fichiers Excel
+✅ Notifications Email / WhatsApp / Chime
+✅ Consultation des logs en temps réel
+✅ Dashboard de monitoring
+
+🔧 CONFIGURATION :
+
+Cette version utilise des paramètres de TEST.
+Pour utiliser vos vrais comptes :
+1. Modifiez le fichier .env
+2. Redémarrez : docker-compose restart
+
+📞 SUPPORT :
+
+Des questions ? Contactez-moi :
+• Email : [votre-email]
+• Téléphone : [votre-téléphone]
+
+Je reste à votre disposition pour :
+- Questions techniques
+- Configuration personnalisée
+- Session de démonstration
+- Formation
+
+Bon test !
+
+Cordialement,
+[Votre nom]
+
+========================================
+  DÉMARRAGE RAPIDE
+========================================
+
+Windows :
+1. Double-clic sur start.bat
+2. Ouvrir http://localhost:4200
+3. Login : admin / admin
+
+Mac/Linux :
+1. chmod +x start.sh
+2. ./start.sh
+3. Ouvrir http://localhost:4200
+4. Login : admin / admin
+
+========================================
+
